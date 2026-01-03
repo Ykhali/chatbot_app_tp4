@@ -13,7 +13,7 @@ public class ChatbotAppApplication {
             System.setProperty(entry.getKey(), entry.getValue());
             System.out.println("Loaded Env Var: " + entry.getKey());
         });
-        System.out.println("OPENAI_API_KEY set: " + (System.getProperty("OPENAI_API_KEY") != null));
+        System.out.println("GEMINI_API_KEY set: " + (System.getProperty("gemini_api_key") != null));
         System.out.println("TELEGRAM_API_KEY set: " + (System.getProperty("TELEGRAM_API_KEY") != null));
 
         SpringApplication.run(ChatbotAppApplication.class, args);

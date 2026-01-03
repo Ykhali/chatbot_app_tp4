@@ -22,7 +22,7 @@ public class AIAgent {
                         System.out.println("---------------------");
                 });
 
-                this.chatClient = builder
+                /*this.chatClient = builder
                                 .defaultSystem("""
                                                 Vous un assistant qui se charge de répondre aux question
                                                 de l'utilisateur en fonction du contexte fourni.
@@ -32,7 +32,17 @@ public class AIAgent {
                                                 MessageChatMemoryAdvisor.builder(memory).build())
                                 .defaultToolCallbacks(tools)
 
-                                .build();
+                                .build();*/
+                this.chatClient = builder
+                        .defaultSystem("""
+        Tu es un assistant utile. 
+        Utilise les outils à ta disposition pour récupérer les informations nécessaires.
+        Ne dis que "JE NE SAIS PAS" uniquement si, après avoir utilisé les outils, 
+        tu n'as toujours pas trouvé la réponse.
+        """)
+                        .defaultAdvisors(MessageChatMemoryAdvisor.builder(memory).build())
+                        .defaultToolCallbacks(tools)
+                        .build();
         }
 
         @GetMapping("/chat")
